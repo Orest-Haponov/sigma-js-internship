@@ -8,7 +8,8 @@
 - Have an ability to see statistical data for found vulnerabilities.
 # FEATURES
 - As a user I want to have an opportunity to register and authorization on website;
-- As a user I want to upload zip file with sources to analyze them on vulnerabilities;
+- As a user I want to be able to create projects on my account;
+- As a user I want to upload zip file with sources into project to analyze them on vulnerabilities;
 - As a user I want to have an opportunity to see results of analyzing uploaded sources;
 - As a user I want to be able to see user information of other people’s;
 - As a user I want to be able to see statistic of uploaded zip files and their vulnerabilities;
