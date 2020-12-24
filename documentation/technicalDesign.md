@@ -1,25 +1,29 @@
 # Secutor structure
 
 ## Frontend
+
 src
+
 - components:
-    >pages 
 
-    >shared 
+  > pages
 
-    >mocks
+  > shared
 
-    >interfaces
+  > mocks
 
-    >constants
+  > interfaces
+
+  > constants
 
 - routes
 - services
 - styles
 - store
-    >action 
 
-    >reducer 
+  > action
+
+  > reducer
 
 # Technologies
 
@@ -39,67 +43,68 @@ src
 - Jest
 
 # Database structure
+
 ## User table
 
-|Field      | Type        |Key        |Connection Table|
-|-----------|-------------|-----------|----------------|
-|userId     |INT          |Primary    |                |
-|password   |VARCHAR      |           |                |
-|name       |VARCHAR      |           |                |
-|photo      |BLOB         |           |                |
+| Field    | Type    | Key     | Connection Table |
+| -------- | ------- | ------- | ---------------- |
+| userId   | INT     | Primary |                  |
+| password | VARCHAR |         |                  |
+| name     | VARCHAR |         |                  |
+| photo    | BLOB    |         |                  |
 
 ## Project table
 
-|Field      | Type        |Key        |Connection Table|
-|-----------|-------------|-----------|----------------|
-|projectId  |INT          |Primary    |                |
-|fileId     |INT          |Foreign    |File table      |
-|name       |VARCHAR      |           |                |
+| Field     | Type    | Key     | Connection Table |
+| --------- | ------- | ------- | ---------------- |
+| projectId | INT     | Primary |                  |
+| fileId    | INT     | Foreign | File table       |
+| name      | VARCHAR |         |                  |
 
 ## User_Project table
 
-|Field        | Type        |Key        |Connection Table|
-|-------------|-------------|-----------|----------------|
-|userProjectId|INT          |Primary    |                |
-|userId       |INT          |Foreign    |User table      |
-|projectId    |INT          |Foreign    |Project table   |
+| Field         | Type | Key     | Connection Table |
+| ------------- | ---- | ------- | ---------------- |
+| userProjectId | INT  | Primary |                  |
+| userId        | INT  | Foreign | User table       |
+| projectId     | INT  | Foreign | Project table    |
 
 ## File table
 
-|Field      | Type        |Key        |Connection Table|
-|-----------|-------------|-----------|----------------|
-|fileId     |INT          |Primary    |                |
-|projectId  |INT          |Foreign    |Project table   |
-|userId     |INT          |Foreign    |User table      |
-|name       |VARCHAR      |           |                |
-|date       |DATATIME     |           |                |
-|sourceId   |INT          |Foreign    |Source table    |
+| Field     | Type     | Key     | Connection Table |
+| --------- | -------- | ------- | ---------------- |
+| fileId    | INT      | Primary |                  |
+| projectId | INT      | Foreign | Project table    |
+| userId    | INT      | Foreign | User table       |
+| name      | VARCHAR  |         |                  |
+| date      | DATATIME |         |                  |
+| sourceId  | INT      | Foreign | Source table     |
 
 ## Source table
 
-|Field          | Type        |Key        |Connection Table|
-|---------------|-------------|-----------|----------------|
-|sourceId       |INT          |Primary    |                |
-|fileId         |INT          |Foreign    |File table      |
-|name           |VARCHAR      |           |                |
-|vulnerabilities|VARCHAR      |           |                |
+| Field           | Type    | Key     | Connection Table |
+| --------------- | ------- | ------- | ---------------- |
+| sourceId        | INT     | Primary |                  |
+| fileId          | INT     | Foreign | File table       |
+| name            | VARCHAR |         |                  |
+| vulnerabilities | VARCHAR |         |                  |
 
 ## Connections
 
-User table -- Many to many --> Project table 
+User table -- Many to many --> Project table
 
 Project table -- One to many --> File table
 
 File table -- One to many --> Source table
 
-
 # Contracts
 
-## [Login contract](./contracts/Login.yaml)
+## [Login contract](./contracts/SecutorContracts.yaml)
 
 # Secutor store
 
 ## Login page
+
 ```
     {
         userName: '',
@@ -109,6 +114,7 @@ File table -- One to many --> Source table
 ```
 
 ## Register page
+
 ```
     {
         userName: '',
@@ -120,6 +126,7 @@ File table -- One to many --> Source table
 ```
 
 ## Home page
+
 ```
     {
         projects: [],
@@ -129,6 +136,7 @@ File table -- One to many --> Source table
 ```
 
 ## Edit project
+
 ```
     {
         newProjectName: '',
@@ -137,6 +145,7 @@ File table -- One to many --> Source table
 ```
 
 ## Project page
+
 ```
     {
         source: {},
@@ -146,6 +155,7 @@ File table -- One to many --> Source table
 ```
 
 ## Source page
+
 ```
     {
         source: [],
@@ -153,6 +163,7 @@ File table -- One to many --> Source table
 ```
 
 ## Settings Page (Change personal data)
+
 ```
     {
         newUserName: '',
@@ -162,6 +173,7 @@ File table -- One to many --> Source table
 ```
 
 ## Settings Page (Change password)
+
 ```
     {
         newPass: '',

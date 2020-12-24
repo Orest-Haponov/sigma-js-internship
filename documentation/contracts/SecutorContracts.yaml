@@ -11,9 +11,9 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 host: virtserver.swaggerhub.com
-basePath: /Orest-Haponov/project/1.0.0
+basePath: /Orest-Haponov/Secutor/1.0.0
 tags:
-- name: project
+- name: pet
   description: Everything about your Pets
   externalDocs:
     description: Find out more
@@ -154,20 +154,20 @@ paths:
         - write:pets
         - read:pets
       deprecated: true
-  /pet/{petId}:
+  /project/{userId}:
     get:
       tags:
-      - pet
-      summary: Find pet by ID
-      description: Returns a single pet
-      operationId: getPetById
+      - project
+      summary: Get projects
+      description: Get all projects by user id
+      operationId: getProjectByUserId
       produces:
       - application/json
       - application/xml
       parameters:
-      - name: petId
+      - name: userId
         in: path
-        description: ID of pet to return
+        description: User id
         required: true
         type: integer
         format: int64
@@ -175,7 +175,7 @@ paths:
         "200":
           description: successful operation
           schema:
-            $ref: '#/definitions/Pet'
+            $ref: '#/definitions/ProjectRes'
         "400":
           description: Invalid ID supplied
         "404":
@@ -193,7 +193,7 @@ paths:
       - application/json
       - application/xml
       parameters:
-      - name: petId
+      - name: userId
         in: path
         description: ID of pet that needs to be updated
         required: true
@@ -229,7 +229,7 @@ paths:
         in: header
         required: false
         type: string
-      - name: petId
+      - name: userId
         in: path
         description: Pet id to delete
         required: true
@@ -300,10 +300,11 @@ paths:
               format: int32
       security:
       - api_key: []
-  /login:
+  /project/add:
     post:
       tags:
-      - Secutor
+      - project
+      summary: Add new project
       operationId: placeOrder
       produces:
       - application/json
@@ -311,17 +312,38 @@ paths:
       parameters:
       - in: body
         name: body
-        description: order placed for purchasing the pet
+        description: Add new project
         required: true
         schema:
-          $ref: '#/definitions/LoginRequest'
+          $ref: '#/definitions/ProjectReq'
       responses:
         "200":
           description: successful operation
           schema:
-            $ref: '#/definitions/LoginResponse'
+            $ref: '#/definitions/ProjectRes'
         "400":
           description: Invalid Order
+  /project/delete/{projectId}:
+    delete:
+      tags:
+      - project
+      summary: Delete project
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: projectId
+        in: path
+        description: The project that needs to be deleted
+        required: true
+        type: string
+      responses:
+        "400":
+          description: Invalid project id supplied
+        "404":
+          description: Project not found
   /store/order/{orderId}:
     get:
       tags:
@@ -538,7 +560,7 @@ paths:
       - user
       summary: Delete user
       description: This can only be done by the logged in user.
-      operationId: deleteUser
+      operationId: deleteProject
       produces:
       - application/json
       - application/xml
@@ -684,18 +706,18 @@ definitions:
         type: string
       message:
         type: string
-  NewProject Response:
+  ProjectRes:
     type: object
     properties:
-      userId:
-        type: integer
-        format: int64
       projectId:
         type: integer
         format: int64
+      userId:
+        type: integer
+        format: int64
       projectName:
         type: string
-  NewProject Request:
+  ProjectReq:
     type: object
     properties:
       userId:
@@ -703,27 +725,6 @@ definitions:
         format: int64
       projectName:
         type: string
-  LoginRequest:
-    type: object
-    properties:
-      name:
-        type: string
-      password:
-        type: integer
-        format: int64
-  LoginResponse:
-    type: object
-    properties:
-      userId:
-        type: integer
-        format: int64
-      userName:
-        type: string
-      userAvatar:
-        type: string
-      userProjects:
-        type: object
-        properties: {}
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
