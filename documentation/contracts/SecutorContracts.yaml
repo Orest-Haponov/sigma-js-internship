@@ -1,0 +1,147 @@
+---
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Swagger Secutor
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: virtserver.swaggerhub.com
+basePath: /Orest-Haponov/Secutor/1.0.0
+tags:
+- name: secutor
+  description: Everything about contracts of Secutor
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: store
+schemes:
+- https
+- http
+paths:
+  /project/{userId}:
+    get:
+      tags:
+      - project
+      summary: Get projects
+      description: Get all projects by user id
+      operationId: getProjectByUserId
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: userId
+        in: path
+        description: User id
+        required: true
+        type: integer
+        format: int64
+      responses:
+        default:
+          description: successful operation
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProjectRes'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Projects not found
+      security:
+      - api_key: []
+  /project/add:
+    post:
+      tags:
+      - project
+      summary: Add new project
+      operationId: placeOrder
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Add new project
+        required: true
+        schema:
+          $ref: '#/definitions/ProjectReq'
+      responses:
+        default:
+          description: successful operation
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProjectRes'
+        "400":
+          description: Invalid Order
+  /project/delete/{projectId}:
+    delete:
+      tags:
+      - project
+      summary: Delete project
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: projectId
+        in: path
+        description: The project that needs to be deleted
+        required: true
+        type: string
+      responses:
+        default:
+          description: successful operation
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProjectRes'
+        "400":
+          description: Invalid project id supplied
+        "404":
+          description: Project not found
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: http://petstore.swagger.io/oauth/dialog
+    flow: implicit
+    scopes:
+      write: modify
+      read: read your contracts
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  ProjectRes:
+    type: object
+    properties:
+      projectId:
+        type: integer
+        format: int64
+      userId:
+        type: integer
+        format: int64
+      projectName:
+        type: string
+  ProjectReq:
+    type: object
+    properties:
+      userId:
+        type: integer
+        format: int64
+      projectName:
+        type: string
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
