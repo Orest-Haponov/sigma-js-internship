@@ -106,78 +106,97 @@ File table -- One to many --> Source table
 ## Login page
 
 ```
-    {
-        userName: '',
-        userPass: '',
-        loginLoader: false
-    }
+  {
+    userName: string,
+    userPass: string,
+    loginLoader: boolean
+  }
 ```
 
 ## Register page
 
 ```
-    {
-        userName: '',
-        userEmail: '',
-        userPass: '',
-        userRePass: '',
-        regiserLoader: false
-    }
+  {
+    userName: string,
+    userEmail: string,
+    userPass: string,
+    userRePass: string,
+    regiserLoader: boolean
+  }
 ```
 
 ## Home page
 
 ```
-    {
-        projects: [],
-        projectName: '',
-        projectLoader: false
-    }
-```
-
-## Edit project
-
-```
-    {
-        newProjectName: '',
-        editProjectLoader: false
-    }
+  {
+    projects: [
+      {
+        id: number,
+        name: string
+      },
+    ],
+    addProjectValue: string,
+    editProjectValue: string,
+    addProjectLoader: boolean
+  }
 ```
 
 ## Project page
 
 ```
-    {
-        source: {},
-        sources: [],
-        scanLoader: false
-    }
+  {
+    source: Object,
+    sources: Array<Object>,
+    scanLoader: boolean
+  }
 ```
 
 ## Source page
 
 ```
-    {
-        source: [],
-    }
+  {
+    sources: Array<Object>,
+    sourceLoader: boolean
+  }
 ```
 
 ## Settings Page (Change personal data)
 
 ```
-    {
-        newUserName: '',
-        newUserEmail: '',
-        settingsLoader: false
-    }
+  {
+    newUserName: string,
+    newUserEmail: string,
+    settingsLoader: boolean
+  }
 ```
 
 ## Settings Page (Change password)
 
 ```
-    {
-        newPass: '',
-        newRePass: '',
-        settingsLoader: false
-    }
+  {
+    newPass: string,
+    newRePass: string,
+    settingsLoader: boolean
+  }
+```
+
+## Errors
+
+```
+  {
+    isRegisterError: boolean,
+    registerError: string,
+    isLoginError: boolean,
+    loginError: string,
+    isAddProjectError: boolean,
+    addProjectError: string,
+    isEditProjectError: boolean,
+    editProjectError: string,
+    isDeleteProjectError: boolean,
+    deleteProjectError: string,
+    isSourceError: boolean,
+    sourceError: string,
+    isSettingsError: boolean,
+    settingsError: string,
+  }
 ```
