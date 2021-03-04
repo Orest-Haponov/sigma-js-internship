@@ -1,0 +1,44 @@
+$white: #ffffff;
+$black: #000000;
+$red: rgb(230, 0, 0);
+$primary:  rgb(48, 108, 187);
+$green:   rgb(103, 241, 122);
+$gap-2: 2px;
+$gap-4: 4px;
+$gap-6: 6px;
+$gap-8: 8px;
+$gap-10: 10px;
+$gap-12: 12px;
+$gap-14: 14px;
+$gap-16: 16px;
+$gap-20: 20px;
+
+@mixin for-mobile {
+  @media screen and (max-width: 540px) {
+    @content;
+  }
+}
+
+@mixin title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@mixin text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@mixin btn {
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  width: 80px;
+  border-radius: 8px;
+  font-weight: 400;
+
+  &:focus{
+    outline: none;
+  }
+}
+

@@ -1,0 +1,50 @@
+@import '../../../../../variables/variables.scss';
+
+.project-list{
+    padding: 0;
+    
+    a{
+        text-decoration: none;
+        color: #000;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    li{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 220px;
+        min-height: 44px;
+        border: 1px solid #000;
+        border-radius: $gap-10;
+        list-style-type: none;
+        margin: $gap-16 0;
+    }
+
+    &-icons{
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+        button{
+            z-index: 999;
+            background: none;
+            border: none;
+            padding: 0;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        svg{
+            cursor: pointer;
+            width: $gap-16;
+            margin: 0 $gap-4 0 0;
+        }
+    }
+}

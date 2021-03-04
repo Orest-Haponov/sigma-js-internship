@@ -1,0 +1,16 @@
+version: "3"
+services:
+  database:
+    image: "postgres"
+    container_name: "secutor_db"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DATABASE: ${DB_DATABASE}
+    ports:
+      - 5433:5432
+    networks: 
+      - secutor
+networks:
+  secutor:
+
