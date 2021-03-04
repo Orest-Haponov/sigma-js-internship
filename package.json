@@ -17,9 +17,12 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start:backend": "cd backend && npm run start:dev",
-    "start:frontend": "cd frontend && npm start",
-    "test": "cd frontend && npm test",
+    "start:backend": "npm run start:dev --prefix backendend",
+    "start:frontend": "npm start --prefix frontend",
+    "test:frontend": "npm test --prefix frontend",
+    "test:frontend:coverage": "npm test --prefix frontend -- --coverage ",
+    "test:backend": "npm test --prefix backend",
+    "test:backend:coverage": "npm test -- --coverage --prefix backend",
     "prettier": "prettier --config .prettierrc --write \"{backend,frontend}/src/**/*.{json,ts,tsx}\"",
     "typecheck": "tsc --project backend --noEmit && tsc --project frontend --noEmit"
   },

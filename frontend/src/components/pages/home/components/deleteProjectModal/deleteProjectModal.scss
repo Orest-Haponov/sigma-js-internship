@@ -1,0 +1,24 @@
+@import '../../../../../variables/variables.scss';
+
+.delete-project-modal{
+    position: absolute;
+    text-align: center;
+    right: 42%;
+    top: 32%;
+    padding: $gap-20;
+    width: 300px;
+    background: #fff;
+
+    &:focus{
+        outline: none;
+    }
+
+    h1{
+        @include title
+    }
+
+    &-buttons{
+        display: flex;
+        justify-content: space-around;
+    }
+}
